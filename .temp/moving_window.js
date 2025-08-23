@@ -1,17 +1,3 @@
-function click_open_btn() {
-    $('#myButton').on('click', function () {
-        console.log('Button was clicked!');
-        $("#includedContent").load("browser_window.html");
-
-    });
-}
-
-$(document).ready(function () {
-    click_open_btn();
-});
-
-// ==========================================================================
-
 let mouse_click_detector = false; //clicking the mouse WITHOUT moveover
 let window_click_detector = false;
 
@@ -20,13 +6,7 @@ let position_y = 0;
 let click_position_x = 0;
 let click_position_y = 0;
 
-let brick = document.getElementById('includedContent');
-
-if (brick) {
-    console.log("The element found!");
-} else {
-    console.log("The element is not found!");
-}
+let brick = document.getElementById('square_cursor');
 
 brick.addEventListener('mousedown', () => {
     mouse_click_detector = true
