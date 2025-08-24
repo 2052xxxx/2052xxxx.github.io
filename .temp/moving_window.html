@@ -8,21 +8,38 @@
   <title>Drag and Drop</title>
   <style>
     #square_cursor {
-      position: static;
+      position: absolute;
       left: 109px;
       top: 109px;
-      height: 50px;
-      width: 50px;
+      height: 200px;
+      width: 200px;
       background-color: rgb(219, 136, 136);
       border: 5px rgb(136, 219, 219) solid;
       cursor: pointer;
+    }
+
+    #title-bar {
+      /* position: absolute; */
+      height: 50px;
+      background-color: #0078d7;
+      color: white;
+      /* padding: 8px; */
+      font-size: 16px;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
   <div id='square_cursor'>
+    <div id="title-bar">Test</div>
+
     <p>huh?</p>
+  </div>
+
+  <div id="myButton" style="margin-top: 1000px; margin-bottom: 1000px; ">
+    <button  style="width: 100px; height: 50px;">Click Me</button>
+    <div id="title-bar">Test</div>
   </div>
 
 </body>

@@ -28,6 +28,17 @@ $(document).ready(function () {
 });
 
 // ==========================================================================
+/*
+    the problem with offset that i've countered today:
+
+i want to move the window by grabing just only the title bar and not in any position of the window.
+but by clicking at one point of the "window" - #includedContent, the event only record at its click's element offset, and then 
+move the window by the #includedContent offset defined by the click's element offset that is NOT from the #includedContent. Which 
+resulted in a really poor glitch animation that maybe causing seizures. idk.
+
+meh.
+*/
+// ==========================================================================
 
 let mouse_click_detector = false; //clicking the mouse WITHOUT moveover
 let window_click_detector = false;
