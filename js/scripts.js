@@ -1,6 +1,9 @@
 let open_turn = false;
+let title_bar;
+let my_window;
+
 function open_close_window(event){
-    $("#includedContent").load("browser_window.html");
+    $("#includedContent").load("browser_window.html", window_element_identify);
 
     if (event.type === "click"){
         console.log('Button was clicked!');
@@ -19,6 +22,23 @@ function open_close_window(event){
     }
 }
 
+function window_element_identify() {
+    title_bar = document.getElementsByClassName('title-bar');
+    my_window = title_bar[0].parentNode;
+    // Hoặc dùng jQuery:
+    // var title_bar = $('#elementIdInsideLoadedHTML')[0];
+    
+    if (title_bar) {
+        console.log("Phần tử đã được tìm thấy:", title_bar);
+        console.log("Phần tử mẹ:", my_window);
+
+        // Thao tác với title_bar ở đây
+        // title_bar.style.display = 'block';
+    } else {
+        console.error("Không tìm thấy phần tử!");
+    }
+}
+
 function click_open_btn() {
     $('#myButton').on('click', open_close_window);
 }
@@ -29,12 +49,15 @@ $(document).ready(function () {
 
 // ==========================================================================
 /*
-    the problem with offset that i've countered today:
+    the problems that i've countered today:
 
 i want to move the window by grabing just only the title bar and not in any position of the window.
 but by clicking at one point of the "window" - #includedContent, the event only record at its click's element offset, and then 
 move the window by the #includedContent offset defined by the click's element offset that is NOT from the #includedContent. Which 
 resulted in a really poor glitch animation that maybe causing seizures. idk.
+
+not only that, i can't handle the output of getElementById of an not-existing-yet element which is *seems like* very crucial 
+in the project.
 
 meh.
 */
