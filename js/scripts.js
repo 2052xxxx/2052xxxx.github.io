@@ -1,9 +1,26 @@
-function click_open_btn() {
-    $('#myButton').on('click', function () {
-        console.log('Button was clicked!');
-        $("#includedContent").load("browser_window.html");
+let open_turn = false;
+function open_close_window(event){
+    $("#includedContent").load("browser_window.html");
 
-    });
+    if (event.type === "click"){
+        console.log('Button was clicked!');
+        open_turn = !open_turn;
+        console.log('Is it open turn: ', open_turn);
+    }
+
+    if (open_turn == false){
+        $("#includedContent").load("browser_window.html", function() {
+            $(this).hide(); // Ẩn phần tử #includedContent và mọi thứ bên trong nó
+        });
+    } else{
+        $("#includedContent").load("browser_window.html", function() {
+            $(this).show(); // Ẩn phần tử #includedContent và mọi thứ bên trong nó
+        });
+    }
+}
+
+function click_open_btn() {
+    $('#myButton').on('click', open_close_window);
 }
 
 $(document).ready(function () {
@@ -44,6 +61,7 @@ window.addEventListener('mousedown', (event) => {
         window_click_detector = true;
         click_position_x = event.offsetX;
         click_position_y = event.offsetY;
+        // console.log("click x, y: ", click_position_x, ", ", click_position_y)
     }
 })
 
@@ -51,6 +69,7 @@ window.addEventListener('mousemove', (event) => {
     if (mouse_click_detector === true) {
         current_position_x = event.clientX;
         current_position_y = event.clientY;
+        // console.log("current x, y: ", current_position_x, ", ", current_position_y)
         brick.style.left = current_position_x - click_position_x + 'px';
         brick.style.top = current_position_y - click_position_y + 'px';
     }
