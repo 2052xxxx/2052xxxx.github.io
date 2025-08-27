@@ -1,20 +1,21 @@
-let open_turn = false;
+let open_turn_1st = false;
+let open_turn_2st = false;
 
 function open_close_window(event){
     // if (event.type === "click"){
     //     console.log('Button was clicked!');
-    //     open_turn = !open_turn;
-    //     console.log('Is it open turn: ', open_turn);
+    //     open_turn_1st = !open_turn_1st;
+    //     console.log('Is it open turn: ', open_turn_1st);
     // }
-    if (event.type === "click") open_turn = !open_turn;
+    if (event.type === "click") open_turn_1st = !open_turn_1st;
 
-    $("#includedContent").load("browser_window.html", function() {
-        $(this).toggle(open_turn);
+    $("#firstWindow").load("browser_window_1.html", function() {
+        $(this).toggle(open_turn_1st);
     });
 }
 
 function click_open_btn() {
-    $('#myButton').on('click', open_close_window);
+    $('#firstWindow-btn').on('click', open_close_window);
 }
 
 $(document).ready(function () {
@@ -26,7 +27,7 @@ $(document).ready(function () {
     $click_position_x = 0;
     $click_position_y = 0;
     
-    $brick = $("#includedContent");
+    $brick = $("#firstWindow");
 
     click_open_btn();
 
@@ -60,8 +61,8 @@ $(document).ready(function () {
 
                     // Constrain to keep element fully visible
                     const constrainedX = Math.max(0, Math.min($(window).width() - $brick.outerWidth(), newX));
-                    const constrainedY = Math.max(0, newY);
-                    // const constrainedY = Math.max(0, Math.min($(window).height() - $brick.outerHeight(), newY));
+                    // const constrainedY = Math.max(0, newY);
+                    const constrainedY = Math.max(0, Math.min($(window).height() - $brick.outerHeight(), newY));
 
                     $brick.css({
                         left: constrainedX + 'px',
@@ -72,8 +73,8 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.close-button', function(event){
-        open_turn = !open_turn;
-        $("#includedContent").hide();
+        open_turn_1st = !open_turn_1st;
+        $("#firstWindow").hide();
     });
 });    
 
