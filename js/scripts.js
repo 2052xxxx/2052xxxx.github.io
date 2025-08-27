@@ -20,12 +20,6 @@ function open_close_window(event){
     }
 }
 
-function window_element_identify() {
-    $(document).on('click', '.title-bar', function(event) {
-        console.log('offsetX:', event.offsetX, 'offsetY:', event.offsetY);
-    });
-}
-
 function click_open_btn() {
     $('#myButton').on('click', open_close_window);
 }
@@ -66,8 +60,20 @@ $(document).ready(function () {
                 if ($mouse_click_detector === true) {
                     $current_position_x = event.clientX;
                     $current_position_y = event.clientY;
-                    $brick.css('left', ($current_position_x - $click_position_x) + 'px');
-                    $brick.css('top', ($current_position_y - $click_position_y) + 'px');
+                    
+                    // This ensures the entire element stays within view
+                    const newX = $current_position_x - $click_position_x;
+                    const newY = $current_position_y - $click_position_y;
+
+                    // Constrain to keep element fully visible
+                    const constrainedX = Math.max(0, Math.min($(window).width() - $brick.outerWidth(), newX));
+                    const constrainedY = Math.max(0, newY);
+                    // const constrainedY = Math.max(0, Math.min($(window).height() - $brick.outerHeight(), newY));
+
+                    $brick.css({
+                        left: constrainedX + 'px',
+                        top: constrainedY + 'px'
+                    });
                 }
             })
     });
