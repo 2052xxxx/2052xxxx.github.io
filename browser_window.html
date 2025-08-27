@@ -17,20 +17,31 @@
     .title-bar {
       background-color: #0078d7;
       color: white;
-      padding: 8px;
+      padding: 0 8px;
       font-size: 16px;
       font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .content {
       padding: 16px;
       background-color: #f9f9f9;
       /* height: calc(100% - 40px); */
     }
+    .close-button{
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="mywindow">
-    <div class="title-bar">My Window</div>
+    <div class="title-bar">
+      <p>
+        My Window
+      </p>
+      <span class="close-button">[X]</span>
+    </div>
     <div class="content">
       This is the content of the window.
       <button id="button">Click here</button>

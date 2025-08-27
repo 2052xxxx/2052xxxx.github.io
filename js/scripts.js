@@ -1,23 +1,16 @@
 let open_turn = false;
 
 function open_close_window(event){
-    $("#includedContent").load("browser_window.html");
+    // if (event.type === "click"){
+    //     console.log('Button was clicked!');
+    //     open_turn = !open_turn;
+    //     console.log('Is it open turn: ', open_turn);
+    // }
+    if (event.type === "click") open_turn = !open_turn;
 
-    if (event.type === "click"){
-        console.log('Button was clicked!');
-        open_turn = !open_turn;
-        console.log('Is it open turn: ', open_turn);
-    }
-
-    if (open_turn == false){
-        $("#includedContent").load("browser_window.html", function() {
-            $(this).hide(); // Ẩn phần tử #includedContent và mọi thứ bên trong nó
-        });
-    } else{
-        $("#includedContent").load("browser_window.html", function() {
-            $(this).show(); // Ẩn phần tử #includedContent và mọi thứ bên trong nó
-        });
-    }
+    $("#includedContent").load("browser_window.html", function() {
+        $(this).toggle(open_turn);
+    });
 }
 
 function click_open_btn() {
@@ -76,6 +69,11 @@ $(document).ready(function () {
                     });
                 }
             })
+    });
+
+    $(document).on('click', '.close-button', function(event){
+        open_turn = !open_turn;
+        $("#includedContent").hide();
     });
 });    
 
