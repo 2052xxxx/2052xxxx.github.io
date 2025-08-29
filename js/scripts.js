@@ -1,5 +1,6 @@
 let open_turn_1st = false;
 let open_turn_2nd = false;
+$z_index = -1;
 
 function click_open_btn() {
     $('#firstWindow-btn').on('click', event => {
@@ -7,6 +8,11 @@ function click_open_btn() {
 
         $("#firstWindow").load("browser_window_1.html", function() {
             $(this).toggle(open_turn_1st);
+
+            $z_index += 1;
+            $("#firstWindow").css({
+                'z-index': $z_index,
+            })
         });
     });
 
@@ -15,6 +21,10 @@ function click_open_btn() {
 
         $("#secondWindow").load("browser_window_2.html", function() {
             $(this).toggle(open_turn_2nd);
+            $z_index += 1;
+            $("#secondWindow").css({
+                'z-index': $z_index,
+            })
         });
     });
     
@@ -23,13 +33,13 @@ function click_open_btn() {
 $(document).ready(function () {
     $mouse_click_detector = false;
     $window_click_detector = false;
+    $firstClickDetected = false;
     
     $position_x = 0;
     $position_y = 0;
     $click_position_x = 0;
     $click_position_y = 0;
 
-    $z_index = 0;
     
     click_open_btn();
     
@@ -57,6 +67,10 @@ $(document).ready(function () {
                 $mouse_click_detector = false;
                 $window_click_detector = false;
                 // $targetWindow.toggleClass("z-index10");
+                $targetWindow.css({
+                    'z-index': $z_index,
+                });
+
             })
             .on("mousedown", event => {
                 // mousedown = nhấn chuột xuống
