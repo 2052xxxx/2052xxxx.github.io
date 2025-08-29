@@ -1,4 +1,16 @@
-#firstWindow{
+#firstWindow {
     width: fit-content;
     position: absolute;
+    /* z-index: 10; */
+}
+
+#secondWindow {
+    width: fit-content;
+    position: absolute;
+    inset-inline-start: 40px;
+    inset-block-start: 100px;
+}
+
+.z-index10{
+    z-index: 10;
 }

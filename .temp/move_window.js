@@ -51,6 +51,6 @@ window.addEventListener('mousemove', (event) => {
 })
 
 myButton.addEventListener('click', (event) => {
-  console.log('offsetX:', event.offsetX, 'offsetY:', event.offsetY);
-  console.log('clientX:', event.clientX, 'clientY:', event.clientY);
+    console.log('offsetX:', event.offsetX, 'offsetY:', event.offsetY);
+    console.log('clientX:', event.clientX, 'clientY:', event.clientY);
 });

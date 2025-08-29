@@ -28,30 +28,44 @@ $(document).ready(function () {
     $position_y = 0;
     $click_position_x = 0;
     $click_position_y = 0;
+
+    $z_index = 0;
+    
+    click_open_btn();
     
     $firstWindow = $("#firstWindow");
     $secondWindow = $("#secondWindow");
 
-    click_open_btn();
-
     $(document).on('mousedown', '.title-bar', function(event) {
-        element = event.target;
-        console.log(element);
-        $mouse_click_detector = true;
+        $parentWindow = this.closest('div[id$="Window"]');
+        $targetWindow = $("#" + $parentWindow.id);
+        $z_index += 1;
 
-        // console.log('offsetX:', event.offsetX, 'offsetY:', event.offsetY);
+        // console.log("You clicked on the title bar of: ", $parentWindow);
+        // console.log("$firstWindow[0]: ", $firstWindow[0]);
+        
+        // if($parentWindow === $firstWindow[0]){ 
+        //     console.log("yes 1")
+        // } else if($parentWindow === $secondWindow[0]){
+        //     console.log("yes 2")
+        // }
+
+        $mouse_click_detector = true;
 
         $(window)
             .on("mouseup", () => {
                 $mouse_click_detector = false;
                 $window_click_detector = false;
+                // $targetWindow.toggleClass("z-index10");
             })
             .on("mousedown", event => {
                 // mousedown = nhấn chuột xuống
                 if ($mouse_click_detector === true) {
                     $window_click_detector = true;
-                    $click_position_x = event.offsetX;
-                    $click_position_y = event.offsetY;
+                    var rect = $(this).get(0).getBoundingClientRect();;
+                    $click_position_x = event.clientX - rect.left;
+                    $click_position_y = event.clientY - rect.top;
+                    // $targetWindow.addClass("z-index10");
                 }
             })
             .on("mousemove", event => {
@@ -64,21 +78,29 @@ $(document).ready(function () {
                     const newY = $current_position_y - $click_position_y;
 
                     // Constrain to keep element fully visible
-                    const constrainedX = Math.max(0, Math.min($(window).width() - $firstWindow.outerWidth(), newX));
+                    const constrainedX = Math.max(0, Math.min($(window).width() - $targetWindow.outerWidth(), newX));
                     // const constrainedY = Math.max(0, newY);
-                    const constrainedY = Math.max(0, Math.min($(window).height() - $firstWindow.outerHeight(), newY));
-
-                    $firstWindow.css({
+                    const constrainedY = Math.max(0, Math.min($(window).height() - $targetWindow.outerHeight(), newY));
+                    $targetWindow.css({
                         left: constrainedX + 'px',
-                        top: constrainedY + 'px'
+                        top: constrainedY + 'px',
+                        'z-index': $z_index,
                     });
                 }
             })
     });
 
     $(document).on('click', '.close-button', function(event){
-        open_turn_1st = !open_turn_1st;
-        $("#firstWindow").hide();
+        $parentWindow = this.closest('div[id$="Window"]');
+        if($parentWindow === $firstWindow[0]){ 
+            console.log("yes 1")
+            open_turn_1st = !open_turn_1st;
+            $("#firstWindow").hide();
+        } else if($parentWindow === $secondWindow[0]){
+            console.log("yes 2")
+            open_turn_2nd = !open_turn_2nd;
+            $("#secondWindow").hide();
+        }
     });
 });    
 
