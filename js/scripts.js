@@ -1,15 +1,17 @@
-let open_turn_1st = false;
-let open_turn_2nd = false;
+$firstWindow_open = false;
+$secondWindow_open = false;
 $z_index = -1;
 
 function click_open_btn() {
     $('#firstWindow-btn').on('click', event => {
-        if (event.type === "click") open_turn_1st = !open_turn_1st;
+        if (event.type === "click") $firstWindow_open = !$firstWindow_open;
 
         $("#firstWindow").load("browser_window_1.html", function() {
-            $(this).toggle(open_turn_1st);
+            $(this).toggle($firstWindow_open);
 
-            $z_index += 1;
+            if ($firstWindow_open === true){
+                $z_index += 1;
+            }
             $("#firstWindow").css({
                 'z-index': $z_index,
             })
@@ -17,11 +19,13 @@ function click_open_btn() {
     });
 
     $('#secondWindow-btn').on('click', event => {
-        if (event.type === "click") open_turn_2nd = !open_turn_2nd;
+        if (event.type === "click") $secondWindow_open = !$secondWindow_open;
 
         $("#secondWindow").load("browser_window_2.html", function() {
-            $(this).toggle(open_turn_2nd);
-            $z_index += 1;
+            $(this).toggle($secondWindow_open);
+            if ($secondWindow_open === true){    
+                $z_index += 1;
+            }
             $("#secondWindow").css({
                 'z-index': $z_index,
             })
@@ -106,13 +110,14 @@ $(document).ready(function () {
 
     $(document).on('click', '.close-button', function(event){
         $parentWindow = this.closest('div[id$="Window"]');
+
         if($parentWindow === $firstWindow[0]){ 
             console.log("yes 1")
-            open_turn_1st = !open_turn_1st;
+            $firstWindow_open = !$firstWindow_open;
             $("#firstWindow").hide();
         } else if($parentWindow === $secondWindow[0]){
             console.log("yes 2")
-            open_turn_2nd = !open_turn_2nd;
+            $secondWindow_open = !$secondWindow_open;
             $("#secondWindow").hide();
         }
     });
