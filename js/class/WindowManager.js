@@ -1,5 +1,3 @@
-import { zIndex } from "../scripts.js";
-
 export class WindowManager {
     constructor(button, container, html) {
         this.button = button;

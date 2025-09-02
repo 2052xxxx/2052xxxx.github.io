@@ -1,5 +1,5 @@
 import {WindowManager} from './class/WindowManager.js';
-export let zIndex = -1;
+let zIndex = -1;
 
 $(document).ready(function () {
     // Use const/let instead of implicit globals
@@ -12,12 +12,12 @@ $(document).ready(function () {
     const firstWindow = new WindowManager(
         $('#firstWindow-btn'),
         $("#firstWindow"),
-        "browser_window_1.html"
+        "browser_window_1.html",
     );
     const secondWindow = new WindowManager(
         $('#secondWindow-btn'),
         $("#secondWindow"),
-        "browser_window_2.html"
+        "browser_window_2.html",
     );
 
     let isDragging = false;
@@ -75,12 +75,15 @@ $(document).ready(function () {
     $(document).on('click', '.close-button', function (event) {
         const $parentWindow = $(this).closest('div[id$="Window"]');
 
-        if ($parentWindow.is($firstWindow)) {
-            windowStates.firstWindow.open = false;
-            display_window($firstWindow, windowStates.firstWindow);
-        } else if ($parentWindow.is($secondWindow)) {
-            windowStates.secondWindow.open = false;
-            display_window($secondWindow, windowStates.secondWindow);
+        if ($parentWindow.is(firstWindow.container)) {
+            console.log("yes 1")
+            firstWindow.openState = false;
+            firstWindow.display_window();
+
+        } else if ($parentWindow.is(secondWindow.container)) {
+            console.log("yes 2")
+            secondWindow.openState = false;
+            secondWindow.display_window();
         }
     });
 });
