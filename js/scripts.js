@@ -1,124 +1,100 @@
-$z_index = -1;
-
-const window_states = {
-    firstWindow: { open: false },
-    secondWindow: { open: false }
-};
-
-function click_open_btn(button, open_turn, html, container) {
-    button.on('click', event => {
-        if (event.type === "click")
-            open_turn.open = !open_turn.open;
-
-        if (!container.data('loaded')) {
-            container.load(html, display_window(container, open_turn));
-            container.data('loaded', true); // Mark as loaded
-        }else{
-            display_window(container, open_turn);
-        }
-    });
-}
-
-function display_window(container, open_turn) {
-    container.toggle(open_turn.open);
-
-    if (open_turn.open === true) {
-        $z_index += 1;
-    }
-    container.css({
-        'z-index': $z_index,
-    })
-
-}
-
 $(document).ready(function () {
-    $mouse_click_detector = false;
-    $window_click_detector = false;
-    $firstClickDetected = false;
+    // Use const/let instead of implicit globals
+    const windowStates = {
+        firstWindow: { open: false },
+        secondWindow: { open: false }
+    };
 
-    $position_x = 0;
-    $position_y = 0;
-    $click_position_x = 0;
-    $click_position_y = 0;
+    let zIndex = -1;
+    let isDragging = false;
+    let dragData = {
+        target: null,
+        offsetX: 0,
+        offsetY: 0
+    };
 
-    $firstWindow = $("#firstWindow");
-    $secondWindow = $("#secondWindow");
+    function click_open_btn(button, open_turn, html, container) {
+        button.on('click', event => {
+            if (event.type === "click")
+                // open_turn.open = !open_turn.open;
+            open_turn.open = true;
+            
+            if (!container.data('loaded')) {
+                container.load(html, display_window(container, open_turn));
+                container.data('loaded', true); // Mark as loaded
+            } else {
+                display_window(container, open_turn);
+            }
+        });
+    }
+    
+    function display_window(container, open_turn) {
+        container.toggle(open_turn.open);
+        
+        if (open_turn.open === true) {
+            zIndex += 1;
+        }
+        container.css({
+            'z-index': zIndex,
+        })
+        
+    }
+    
+    const $firstWindow = $("#firstWindow");
+    const $secondWindow = $("#secondWindow");
 
-    // click_open_btn();
-    click_open_btn($('#firstWindow-btn'), window_states.firstWindow, "browser_window_1.html", $("#firstWindow"))
-    click_open_btn($('#secondWindow-btn'), window_states.secondWindow, "browser_window_2.html", $("#secondWindow"))
+    // Initialize window buttons
+    click_open_btn($('#firstWindow-btn'), windowStates.firstWindow, "browser_window_1.html", $firstWindow);
+    click_open_btn($('#secondWindow-btn'), windowStates.secondWindow, "browser_window_2.html", $secondWindow);
 
-
+    // Window drag handling
     $(document).on('mousedown', '.title-bar', function (event) {
-        $parentWindow = this.closest('div[id$="Window"]');
-        $targetWindow = $("#" + $parentWindow.id);
-        $z_index += 1;
+        const $targetWindow = $(this).closest('div[id$="Window"]');
+        zIndex += 1;
+        isDragging = true;
 
-        // console.log("You clicked on the title bar of: ", $parentWindow);
-        // console.log("$firstWindow[0]: ", $firstWindow[0]);
+        dragData = {
+            target: $targetWindow,
+            offsetX: event.clientX - $targetWindow.offset().left,
+            offsetY: event.clientY - $targetWindow.offset().top
+        };
 
-        $mouse_click_detector = true;
-
-        $(window)
-            .on("mouseup", () => {
-                $mouse_click_detector = false;
-                $window_click_detector = false;
-                // $targetWindow.toggleClass("z-index10");
-                $targetWindow.css({
-                    'z-index': $z_index,
-                });
-
-            })
-            .on("mousedown", event => {
-                // mousedown = nhấn chuột xuống
-                if ($mouse_click_detector === true) {
-                    $window_click_detector = true;
-                    var rect = $(this).get(0).getBoundingClientRect();;
-                    $click_position_x = event.clientX - rect.left;
-                    $click_position_y = event.clientY - rect.top;
-                    // $targetWindow.addClass("z-index10");
-                }
-            })
-            .on("mousemove", event => {
-                if ($mouse_click_detector === true) {
-                    $current_position_x = event.clientX;
-                    $current_position_y = event.clientY;
-
-                    // This ensures the entire element stays within view
-                    const newX = $current_position_x - $click_position_x;
-                    const newY = $current_position_y - $click_position_y;
-
-                    // Constrain to keep element fully visible
-                    const constrainedX = Math.max(0, Math.min($(window).width() - $targetWindow.outerWidth(), newX));
-                    // const constrainedY = Math.max(0, newY);
-                    const constrainedY = Math.max(0, Math.min($(window).height() - $targetWindow.outerHeight(), newY));
-                    $targetWindow.css({
-                        left: constrainedX + 'px',
-                        top: constrainedY + 'px',
-                        'z-index': $z_index,
-                    });
-                }
-            })
+        $targetWindow.css('z-index', zIndex);
+        event.preventDefault();
     });
 
+    // Global mouse events for dragging
+    $(document)
+        .on('mousemove', function (event) {
+            if (!isDragging || !dragData.target) return;
+
+            const newX = event.clientX - dragData.offsetX;
+            const newY = event.clientY - dragData.offsetY;
+
+            // Constrain to viewport
+            const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.outerWidth(), newX));
+            const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.outerHeight(), newY));
+
+            dragData.target.css({
+                left: constrainedX + 'px',
+                top: constrainedY + 'px'
+            });
+        })
+        .on('mouseup', function () {
+            isDragging = false;
+            dragData.target = null;
+        });
+
+    // Close button handling
     $(document).on('click', '.close-button', function (event) {
-        $parentWindow = this.closest('div[id$="Window"]');
-        if ($parentWindow === $firstWindow[0]) {
-            console.log("yes 1");
-            window_states.firstWindow.open = false;
-            display_window($("#firstWindow"), window_states.firstWindow);
-        } else if ($parentWindow === $secondWindow[0]) {
-            console.log("yes 2");
-            window_states.secondWindow.open = false;
-            display_window($("#secondWindow"), window_states.secondWindow);
+        const $parentWindow = $(this).closest('div[id$="Window"]');
+
+        if ($parentWindow.is($firstWindow)) {
+            windowStates.firstWindow.open = false;
+            display_window($firstWindow, windowStates.firstWindow);
+        } else if ($parentWindow.is($secondWindow)) {
+            windowStates.secondWindow.open = false;
+            display_window($secondWindow, windowStates.secondWindow);
         }
     });
 });
-
-// ==========================================================================
-/*
-    the problems that i've countered today:
-yeah JQuery is da bestttttt fk you javascript.
-*/
-// ==========================================================================
-
