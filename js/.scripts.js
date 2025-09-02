@@ -1,5 +1,4 @@
-import WindowManager from './class/WindowManager';
-export let zIndex = -1;
+let zIndex = -1;
 
 $(document).ready(function () {
     // Use const/let instead of implicit globals
