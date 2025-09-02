@@ -1,24 +1,16 @@
-import {WindowManager} from './class/WindowManager.js';
+import WindowManager from './class/WindowManager';
 export let zIndex = -1;
 
 $(document).ready(function () {
     // Use const/let instead of implicit globals
-    // const $firstWindow = $("#firstWindow");
-    // const $secondWindow = $("#secondWindow");
-
-    // click_open_btn($('#firstWindow-btn'), windowStates.firstWindow, "browser_window_1.html", $firstWindow);
-    // click_open_btn($('#secondWindow-btn'), windowStates.secondWindow, "browser_window_2.html", $secondWindow);
-
-    const firstWindow = new WindowManager(
-        $('#firstWindow-btn'),
-        $("#firstWindow"),
-        "browser_window_1.html"
-    );
-    const secondWindow = new WindowManager(
-        $('#secondWindow-btn'),
-        $("#secondWindow"),
-        "browser_window_2.html"
-    );
+    const windowStates = {
+        firstWindow: {
+            open: false
+        },
+        secondWindow: {
+            open: false
+        }
+    };
 
     let isDragging = false;
     let dragData = {
@@ -27,12 +19,40 @@ $(document).ready(function () {
         offsetY: 0
     };
 
+    function click_open_btn(button, open_turn, html, container) {
+        button.on('click', event => {
+            if (event.type === "click")
+                // open_turn.open = !open_turn.open;
+                open_turn.open = true;
+
+            if (!container.data('loaded')) {
+                container.load(html, display_window(container, open_turn));
+                container.data('loaded', true); // Mark as loaded
+            } else {
+                display_window(container, open_turn);
+            }
+        });
+    }
+
+    function display_window(container, open_turn) {
+        container.toggle(open_turn.open);
+
+        if (open_turn.open === true) {
+            zIndex += 1;
+        }
+        container.css({
+            'z-index': zIndex,
+        })
+
+    }
+
+    const $firstWindow = $("#firstWindow");
+    const $secondWindow = $("#secondWindow");
 
     // Initialize window buttons
-    // click_open_btn($('#firstWindow-btn'), windowStates.firstWindow, "browser_window_1.html", $firstWindow);
-    // click_open_btn($('#secondWindow-btn'), windowStates.secondWindow, "browser_window_2.html", $secondWindow);
-    firstWindow.click_open_button();
-    secondWindow.click_open_button();
+    click_open_btn($('#firstWindow-btn'), windowStates.firstWindow, "browser_window_1.html", $firstWindow);
+    click_open_btn($('#secondWindow-btn'), windowStates.secondWindow, "browser_window_2.html", $secondWindow);
+
     // Window drag handling
     $(document).on('mousedown', '.title-bar', function (event) {
         const $targetWindow = $(this).closest('div[id$="Window"]');
