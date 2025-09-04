@@ -1,14 +1,13 @@
 import {WindowManager} from './class/WindowManager.js';
-let zIndex = -1;
 
 $(document).ready(function () {
-    // Use const/let instead of implicit globals
-    // const $firstWindow = $("#firstWindow");
-    // const $secondWindow = $("#secondWindow");
-
-    // click_open_btn($('#firstWindow-btn'), windowStates.firstWindow, "browser_window_1.html", $firstWindow);
-    // click_open_btn($('#secondWindow-btn'), windowStates.secondWindow, "browser_window_2.html", $secondWindow);
-
+    let isDragging = false;
+    let dragData = {
+        target: null,
+        offsetX: 0,
+        offsetY: 0
+    };
+    
     const firstWindow = new WindowManager(
         $('#firstWindow-btn'),
         $("#firstWindow"),
@@ -20,19 +19,10 @@ $(document).ready(function () {
         "browser_window_2.html"
     );
 
-    let isDragging = false;
-    let dragData = {
-        target: null,
-        offsetX: 0,
-        offsetY: 0
-    };
-
-
     // Initialize window buttons
-    // click_open_btn($('#firstWindow-btn'), windowStates.firstWindow, "browser_window_1.html", $firstWindow);
-    // click_open_btn($('#secondWindow-btn'), windowStates.secondWindow, "browser_window_2.html", $secondWindow);
-    firstWindow.click_open_button();
-    secondWindow.click_open_button();
+    firstWindow.init();
+    secondWindow.init();
+
     // Window drag handling
     $(document).on('mousedown', '.title-bar', function (event) {
         const $targetWindow = $(this).closest('div[id$="Window"]');

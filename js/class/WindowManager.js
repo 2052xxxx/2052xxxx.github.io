@@ -1,6 +1,10 @@
 export class WindowManager {
     static zIndex = -1;
 
+    static updateZIndex() {
+        WindowManager.zIndex += 1; // Class method updates global
+    }
+
     constructor(button, container, html) {
         this.button = button;
         this.container = container;
@@ -8,13 +12,14 @@ export class WindowManager {
         this.openState = false;
     }
 
-    static updateZIndex() {
-        WindowManager.zIndex += 1; // Class method updates global
-    }
-
     // static getZIndex() {
     //     return zIndex; // Class method reads global
     // }
+
+    init(){
+        this.click_open_button();
+        // this.display_window();
+    }
 
     click_open_button() {
         this.button.on('click', event => {
