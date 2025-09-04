@@ -1,5 +1,6 @@
 export class WindowManager {
     static zIndex = -1;
+    static my_windows = [];
 
     static updateZIndex() {
         WindowManager.zIndex += 1; // Class method updates global
@@ -10,13 +11,14 @@ export class WindowManager {
         this.container = container;
         this.html = html;
         this.openState = false;
+        WindowManager.my_windows.push(this);
     }
 
     // static getZIndex() {
     //     return zIndex; // Class method reads global
     // }
 
-    init(){
+    init() {
         this.click_open_button();
         // this.display_window();
     }
@@ -46,4 +48,13 @@ export class WindowManager {
             'z-index': WindowManager.zIndex,
         })
     }
+
+    click_close_button() {
+        this.openState = false;
+        this.display_window();
+    }
+
+    // all_my_windows(){
+    //     my_windows.push(this);
+    // }
 }

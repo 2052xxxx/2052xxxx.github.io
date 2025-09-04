@@ -1,4 +1,4 @@
-import {WindowManager} from './class/WindowManager.js';
+import { WindowManager } from './class/WindowManager.js';
 
 $(document).ready(function () {
     let isDragging = false;
@@ -7,21 +7,29 @@ $(document).ready(function () {
         offsetX: 0,
         offsetY: 0
     };
-    
+
     const firstWindow = new WindowManager(
         $('#firstWindow-btn'),
         $("#firstWindow"),
-        "browser_window_1.html"
+        "/html/browser_window_1.html"
     );
     const secondWindow = new WindowManager(
         $('#secondWindow-btn'),
         $("#secondWindow"),
-        "browser_window_2.html"
+        "/html/browser_window_2.html"
     );
+
+    const thirdWindow = new WindowManager(
+        $('#thirdWindow-btn'),
+        $("#thirdWindow"),
+        "/html/browser_window_3.html"
+    );
+
 
     // Initialize window buttons
     firstWindow.init();
     secondWindow.init();
+    thirdWindow.init();
 
     // Window drag handling
     $(document).on('mousedown', '.title-bar', function (event) {
@@ -64,16 +72,12 @@ $(document).ready(function () {
     // Close button handling
     $(document).on('click', '.close-button', function (event) {
         const $parentWindow = $(this).closest('div[id$="Window"]');
+        const windowInstance = WindowManager.my_windows.find(win =>
+            $parentWindow.is(win.container)
+        );
 
-        if ($parentWindow.is(firstWindow.container)) {
-            console.log("yes 1")
-            firstWindow.openState = false;
-            firstWindow.display_window();
-
-        } else if ($parentWindow.is(secondWindow.container)) {
-            console.log("yes 2")
-            secondWindow.openState = false;
-            secondWindow.display_window();
+        if (windowInstance) {
+            windowInstance.click_close_button();
         }
     });
 });
