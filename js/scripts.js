@@ -12,12 +12,12 @@ $(document).ready(function () {
     const firstWindow = new WindowManager(
         $('#firstWindow-btn'),
         $("#firstWindow"),
-        "browser_window_1.html",
+        "browser_window_1.html"
     );
     const secondWindow = new WindowManager(
         $('#secondWindow-btn'),
         $("#secondWindow"),
-        "browser_window_2.html",
+        "browser_window_2.html"
     );
 
     let isDragging = false;
@@ -36,7 +36,7 @@ $(document).ready(function () {
     // Window drag handling
     $(document).on('mousedown', '.title-bar', function (event) {
         const $targetWindow = $(this).closest('div[id$="Window"]');
-        zIndex += 1;
+        WindowManager.updateZIndex();
         isDragging = true;
 
         dragData = {
@@ -45,7 +45,7 @@ $(document).ready(function () {
             offsetY: event.clientY - $targetWindow.offset().top
         };
 
-        $targetWindow.css('z-index', zIndex);
+        $targetWindow.css('z-index', WindowManager.zIndex);
         event.preventDefault();
     });
 

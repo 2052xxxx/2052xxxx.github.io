@@ -1,4 +1,6 @@
 export class WindowManager {
+    static zIndex = -1;
+
     constructor(button, container, html) {
         this.button = button;
         this.container = container;
@@ -6,9 +8,9 @@ export class WindowManager {
         this.openState = false;
     }
 
-    // static updateZIndex() {
-    //     zIndex += 1; // Class method updates global
-    // }
+    static updateZIndex() {
+        WindowManager.zIndex += 1; // Class method updates global
+    }
 
     // static getZIndex() {
     //     return zIndex; // Class method reads global
@@ -32,11 +34,11 @@ export class WindowManager {
     display_window() {
         this.container.toggle(this.openState);
 
-        // if (this.openState === true) {
-        //     WindowManager.updateZIndex();
-        // }
-        // this.container.css({
-        //     'z-index': WindowManager.getZIndex(),
-        // })
+        if (this.openState === true) {
+            WindowManager.updateZIndex();
+        }
+        this.container.css({
+            'z-index': WindowManager.zIndex,
+        })
     }
 }
