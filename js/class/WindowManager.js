@@ -53,8 +53,4 @@ export class WindowManager {
         this.openState = false;
         this.display_window();
     }
-
-    // all_my_windows(){
-    //     my_windows.push(this);
-    // }
 }
