@@ -1,15 +1,24 @@
 :root {
     --background: linear-gradient(180deg, #8BA3FD 0%, #E2E6FF 35%, #FFFFFF 100%);
-    --title-text: 3.75em; /* 60px = 3.75em */
-    --subtitle-text: 1.5625em; /* 25px = 1.5625em */
+    --title-text: 3.75em;
+    --subtitle-text: 1.5625em;
     --title-color: #2B2B5D;
     --subtitle-color: #476CE3;
+    --icon-name: 1.2em;
 }
 
 body {
     height: 100%;
     margin: 0;
     padding: 0;
+
+    background-image:
+        url("/img/clouds/corner-cloud-bottom.png"),
+        url("/img/clouds/corner-cloud-top.png"),
+        var(--background);
+    background-position: left bottom, right top;
+    background-repeat: no-repeat, no-repeat;
+
 }
 
 /* .vt323-regular {
@@ -18,7 +27,9 @@ body {
     } */
 
 .container {
-    background: var(--background);
+    /* flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly; */
     min-height: 100vh;
     font-family: "VT323", monospace;
     text-align: center;
@@ -39,38 +50,69 @@ body {
 }
 
 
-.homepage-title >.title {
-    letter-spacing: 0.1em; /* 10% == 0.1 em */
+.homepage-title>.title {
+    letter-spacing: 0.1em;
+    /* 10% == 0.1 em */
     font-size: var(--title-text);
     color: var(--title-color);
 }
 
 .homepage-subtitle>.subtitle {
-    letter-spacing: 0.1em; /* 10% == 0.1 em */
+    letter-spacing: 0.1em;
+    /* 10% == 0.1 em */
     font-size: var(--subtitle-text);
     color: var(--subtitle-color);
 }
 
 .element {
-    margin:0 0.2em; /* Adds a small space before the element */
+    margin: 0 0.2em;
+    /* Adds a small space before the element */
     background-image: url('/img/cat-spritesheet.png');
     /* size of one frame */
     width: 83px;
     height: 61px;
     animation: sprite 0.5s steps(3) infinite;
-    
+
 }
 
 @keyframes sprite {
     from {
         /* first frame */
         background-position: 0px;
-        
+
     }
 
     to {
         /* last frame */
         background-position: -249px;
-        
+
     }
 }
+
+.categories {
+    display: grid;
+    grid-template-rows: 70px 20px;
+    grid-template-columns: repeat(5, 200px);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    padding-top: 7%;
+}
+
+.icon-img {
+    height: 100%;
+}
+
+.icon-name {
+    font-size: var(--icon-name);
+}
+
+/* .top-right-cloud {
+    background-image: url('/img/clouds/corner-cloud-top.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+    width: 1200px;
+} */
