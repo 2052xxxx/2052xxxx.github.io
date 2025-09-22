@@ -1,5 +1,5 @@
 export class WindowManager {
-    static zIndex = -1;
+    static zIndex = 0;
     static my_windows = [];
 
     static updateZIndex() {
@@ -25,10 +25,11 @@ export class WindowManager {
 
     click_open_button() {
         this.button.on('click', event => {
-            if (event.type === "click")
+            if (event.type === "click"){
                 // open_turn.open = !open_turn.open;
                 this.openState = true;
-
+                console.log("clicked!!")
+            }
             if (!this.container.data('loaded')) {
                 this.container.load(this.html, this.display_window());
                 this.container.data('loaded', true); // Mark as loaded

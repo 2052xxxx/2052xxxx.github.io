@@ -11,25 +11,31 @@ $(document).ready(function () {
     const firstWindow = new WindowManager(
         $('#firstWindow-btn'),
         $("#firstWindow"),
-        "/html/browser_window_1.html"
+        "/windows/browser_window_1.html"
     );
     const secondWindow = new WindowManager(
         $('#secondWindow-btn'),
         $("#secondWindow"),
-        "/html/browser_window_2.html"
+        "/windows/browser_window_2.html"
     );
 
     const thirdWindow = new WindowManager(
         $('#thirdWindow-btn'),
         $("#thirdWindow"),
-        "/html/browser_window_3.html"
+        "/windows/browser_window_3.html"
     );
 
+    const aboutWindow = new WindowManager(
+        $('#about-btn'),
+        $("#aboutWindow"),
+        "/windows/about.html"
+    );
 
     // Initialize window buttons
     firstWindow.init();
     secondWindow.init();
     thirdWindow.init();
+    aboutWindow.init();
 
     // Window drag handling
     $(document).on('mousedown', '.title-bar', function (event) {
@@ -56,8 +62,8 @@ $(document).ready(function () {
             const newY = event.clientY - dragData.offsetY;
 
             // Constrain to viewport
-            const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.outerWidth(), newX));
-            const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.outerHeight(), newY));
+            const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.width(), newX));
+            const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.height(), newY));
 
             dragData.target.css({
                 left: constrainedX + 'px',

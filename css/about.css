@@ -1,0 +1,47 @@
+.about-me {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background-color: #CBD8FD;
+    outline: 3px solid white;
+    outline-offset: -3px;
+
+}
+
+.title-bar {
+    position: relative;
+    background-color: #AFBDFC;
+    color: black;
+    top: 5px;
+    margin: 0 5px;
+    padding: 0 5px;
+    height: 24px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.2em;
+    cursor: grab;
+}
+
+.title-bar:active{
+    cursor: grabbing;
+}
+
+.text-img{
+    display: flex;
+    justify-content: center;
+}
+
+.text-img > span{
+    padding-left: 10px;
+}
+
+.close-button {
+    cursor: pointer;
+    height: 80%;
+}
+
+.close-button:active{
+    transform: rotate(180deg);
+}
