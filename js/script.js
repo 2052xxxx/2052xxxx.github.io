@@ -38,25 +38,25 @@ $(document).ready(function () {
     const certificateWindow = new WindowManager(
         $('#certificate-btn'),
         $("#certificateWindow"),
-        "/windows/about.html"
+        "/windows/certificate.html"
     );    
 
     const projectsWindow = new WindowManager(
         $('#projects-btn'),
         $("#projectsWindow"),
-        "/windows/about.html"
+        "/windows/projects.html"
     );    
 
     const myResumeWindow = new WindowManager(
         $('#myResume-btn'),
         $("#myResumeWindow"),
-        "/windows/about.html"
+        "/windows/myResume.html"
     );    
 
     const contactWindow = new WindowManager(
         $('#contact-btn'),
         $("#contactWindow"),
-        "/windows/about.html"
+        "/windows/contact.html"
     );    
     // Initialize window buttons
     aboutWindow.init();
@@ -84,8 +84,6 @@ $(document).ready(function () {
             'z-index': WindowManager.zIndex,
             'transition': 'none'
         });
-
-        event.preventDefault();
     });
 
     // Global mouse events for dragging
