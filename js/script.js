@@ -38,15 +38,18 @@ $(document).ready(function () {
     aboutWindow.init();
 
     // Window drag handling
-    $(document).on('mousedown', '.title-bar', function (event) {
+    $(document).on('mousedown touchstart', '.title-bar', function (event) {
         const $targetWindow = $(this).closest('div[id$="Window"]');
         WindowManager.updateZIndex();
         isDragging = true;
 
+        const clientX = event.clientX || (event.originalEvent.touches && event.originalEvent.touches[0].clientX);
+        const clientY = event.clientY || (event.originalEvent.touches && event.originalEvent.touches[0].clientY);
+
         dragData = {
             target: $targetWindow,
-            offsetX: event.clientX - $targetWindow.offset().left,
-            offsetY: event.clientY - $targetWindow.offset().top
+            offsetX: clientX - $targetWindow.offset().left,
+            offsetY: clientY - $targetWindow.offset().top
         };
 
         $targetWindow.css('z-index', WindowManager.zIndex);
@@ -55,22 +58,25 @@ $(document).ready(function () {
 
     // Global mouse events for dragging
     $(document)
-        .on('mousemove', function (event) {
+        .on('mousemove touchmove', function (event) {
             if (!isDragging || !dragData.target) return;
 
-            const newX = event.clientX - dragData.offsetX;
-            const newY = event.clientY - dragData.offsetY;
+            const clientX = event.clientX || (event.originalEvent.touches && event.originalEvent.touches[0].clientX);
+            const clientY = event.clientY || (event.originalEvent.touches && event.originalEvent.touches[0].clientY);
+
+            const newX = clientX - dragData.target.offsetX;
+            const newY = clientY - dragData.target.offsetY;
 
             // Constrain to viewport
-            const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.width(), newX));
-            const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.height(), newY));
+            const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.outerWidth(), newX));
+            const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.outerHeight(), newY));
 
             dragData.target.css({
                 left: constrainedX + 'px',
                 top: constrainedY + 'px'
             });
         })
-        .on('mouseup', function () {
+        .on('mouseup touchend', function () {
             isDragging = false;
             dragData.target = null;
         });
