@@ -8,34 +8,62 @@ $(document).ready(function () {
         offsetY: 0
     };
 
-    const firstWindow = new WindowManager(
-        $('#firstWindow-btn'),
-        $("#firstWindow"),
-        "/windows/browser_window_1.html"
-    );
-    const secondWindow = new WindowManager(
-        $('#secondWindow-btn'),
-        $("#secondWindow"),
-        "/windows/browser_window_2.html"
-    );
+    // const firstWindow = new WindowManager(
+    //     $('#firstWindow-btn'),
+    //     $("#firstWindow"),
+    //     "/windows/browser_window_1.html"
+    // );
+    // const secondWindow = new WindowManager(
+    //     $('#secondWindow-btn'),
+    //     $("#secondWindow"),
+    //     "/windows/browser_window_2.html"
+    // );
 
-    const thirdWindow = new WindowManager(
-        $('#thirdWindow-btn'),
-        $("#thirdWindow"),
-        "/windows/browser_window_3.html"
-    );
+    // const thirdWindow = new WindowManager(
+    //     $('#thirdWindow-btn'),
+    //     $("#thirdWindow"),
+    //     "/windows/browser_window_3.html"
+    // );
+
+    // firstWindow.init();
+    // secondWindow.init();
+    // thirdWindow.init();
 
     const aboutWindow = new WindowManager(
         $('#about-btn'),
         $("#aboutWindow"),
         "/windows/about.html"
-    );
+    );    
 
+    const certificateWindow = new WindowManager(
+        $('#certificate-btn'),
+        $("#certificateWindow"),
+        "/windows/about.html"
+    );    
+
+    const projectsWindow = new WindowManager(
+        $('#projects-btn'),
+        $("#projectsWindow"),
+        "/windows/about.html"
+    );    
+
+    const myResumeWindow = new WindowManager(
+        $('#myResume-btn'),
+        $("#myResumeWindow"),
+        "/windows/about.html"
+    );    
+
+    const contactWindow = new WindowManager(
+        $('#contact-btn'),
+        $("#contactWindow"),
+        "/windows/about.html"
+    );    
     // Initialize window buttons
-    firstWindow.init();
-    secondWindow.init();
-    thirdWindow.init();
     aboutWindow.init();
+    certificateWindow.init();
+    projectsWindow.init();
+    myResumeWindow.init();
+    contactWindow.init();
 
     // Window drag handling
     $(document).on('mousedown touchstart', '.title-bar', function (event) {
@@ -43,8 +71,8 @@ $(document).ready(function () {
         WindowManager.updateZIndex();
         isDragging = true;
 
-        const clientX = event.clientX || (event.originalEvent.touches && event.originalEvent.touches[0].clientX);
-        const clientY = event.clientY || (event.originalEvent.touches && event.originalEvent.touches[0].clientY);
+        const clientX = event.clientX || event.originalEvent.touches[0].clientX;
+        const clientY = event.clientY || event.originalEvent.touches[0].clientY;
 
         dragData = {
             target: $targetWindow,
@@ -52,7 +80,11 @@ $(document).ready(function () {
             offsetY: clientY - $targetWindow.offset().top
         };
 
-        $targetWindow.css('z-index', WindowManager.zIndex);
+        $targetWindow.css({
+            'z-index': WindowManager.zIndex,
+            'transition': 'none'
+        });
+
         event.preventDefault();
     });
 
@@ -61,11 +93,11 @@ $(document).ready(function () {
         .on('mousemove touchmove', function (event) {
             if (!isDragging || !dragData.target) return;
 
-            const clientX = event.clientX || (event.originalEvent.touches && event.originalEvent.touches[0].clientX);
-            const clientY = event.clientY || (event.originalEvent.touches && event.originalEvent.touches[0].clientY);
+            const clientX = event.clientX || event.originalEvent.touches[0].clientX;
+            const clientY = event.clientY || event.originalEvent.touches[0].clientY;
 
-            const newX = clientX - dragData.target.offsetX;
-            const newY = clientY - dragData.target.offsetY;
+            const newX = clientX - dragData.offsetX;
+            const newY = clientY - dragData.offsetY;
 
             // Constrain to viewport
             const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.outerWidth(), newX));
@@ -75,10 +107,15 @@ $(document).ready(function () {
                 left: constrainedX + 'px',
                 top: constrainedY + 'px'
             });
+
+            event.preventDefault();
         })
         .on('mouseup touchend', function () {
             isDragging = false;
-            dragData.target = null;
+            if (dragData.target) {
+                dragData.target.css('transition', '');
+                dragData.target = null;
+            }
         });
 
     // Close button handling
