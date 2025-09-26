@@ -8,27 +8,6 @@ $(document).ready(function () {
         offsetY: 0
     };
 
-    // const firstWindow = new WindowManager(
-    //     $('#firstWindow-btn'),
-    //     $("#firstWindow"),
-    //     "/windows/browser_window_1.html"
-    // );
-    // const secondWindow = new WindowManager(
-    //     $('#secondWindow-btn'),
-    //     $("#secondWindow"),
-    //     "/windows/browser_window_2.html"
-    // );
-
-    // const thirdWindow = new WindowManager(
-    //     $('#thirdWindow-btn'),
-    //     $("#thirdWindow"),
-    //     "/windows/browser_window_3.html"
-    // );
-
-    // firstWindow.init();
-    // secondWindow.init();
-    // thirdWindow.init();
-
     const aboutWindow = new WindowManager(
         $('#about-btn'),
         $("#aboutWindow"),
@@ -58,6 +37,7 @@ $(document).ready(function () {
         $("#contactWindow"),
         "/windows/contact.html"
     );    
+    
     // Initialize window buttons
     aboutWindow.init();
     certificateWindow.init();

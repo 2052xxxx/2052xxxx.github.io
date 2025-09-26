@@ -5,7 +5,8 @@
     background-color: #CBD8FD;
     outline: 3px solid white;
     outline-offset: -3px;
-
+    overflow: auto;
+    touch-action: none;
 }
 
 .title-bar {
@@ -24,16 +25,16 @@
     cursor: grab;
 }
 
-.title-bar:active{
+.title-bar:active {
     cursor: grabbing;
 }
 
-.text-img{
+.text-img {
     display: flex;
     justify-content: center;
 }
 
-.text-img > span{
+.text-img>span {
     padding-left: 10px;
     align-self: center;
 }
@@ -43,6 +44,101 @@
     height: 80%;
 }
 
-.close-button:active{
+.close-button:active {
     transform: rotate(180deg);
+}
+
+.intro{
+    margin: 25px 20px 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "ava text text text"
+        "overview overview overview overview"
+        "menu main main main"
+        "menu main main main"
+        ; 
+    gap: 10px;
+}
+
+.avatar {
+    padding: auto;
+    height: 120px;
+    width: 120px;
+    background-color: white;
+    border-radius: 50%;
+    grid-area: ava;
+}
+
+
+.text{
+    letter-spacing: 0.1em;
+    grid-area: text;
+    text-align: left;
+    align-self: center;
+}
+
+.text > .title{
+    font-size: 40px;
+    margin-bottom: 0.2em;
+}
+
+.text > .subtitle{
+    font-size: 18.72px;
+}
+
+.overview{
+    grid-area: overview;
+    text-align: justify;
+}
+
+.menu{
+    grid-area: menu;
+    text-align: left;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu > .title{
+    background-color: #2B2B5D;
+    display: inline-block;
+    color: white;
+    letter-spacing: 0.2em;
+    padding: 0 2px 0 5px;
+}
+
+.menu > .content{
+    background-color: #AFBDFC;
+    border: 2px solid #2B2B5D;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #2B2B5D;
+}
+
+.menu > .content > li{
+    padding: 5px;
+}
+
+.menu > .content > li > a {
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
+.menu > .content > li:hover{
+    background-color: #6074C4;
+    color: white;
+}
+
+.menu > .content > li:hover > a {
+    color: inherit;
+}
+
+.main-div {
+    grid-area: main;
+    text-align: left;
 }

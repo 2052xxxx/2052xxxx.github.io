@@ -93,6 +93,7 @@ body {
     display: grid;
     grid-template-rows: 70px 20px;
     grid-template-columns: repeat(5, 200px);
+    row-gap: 5px;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -107,6 +108,7 @@ body {
 
 .icon-name {
     font-size: var(--icon-name);
+    cursor: default;
 }
 
 .clouds {
