@@ -20,6 +20,11 @@ body {
     touch-action: none;
 }
 
+.loading {
+    visibility: hidden !important;
+    overflow: hidden !important;
+}
+
 /* .vt323-regular {
     font-family: "VT323", monospace;
     font-style: normal;

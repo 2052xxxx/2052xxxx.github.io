@@ -23,16 +23,38 @@ export class WindowManager {
         // this.display_window();
     }
 
+    // click_open_button() {
+    //     this.button.on('click', event => {
+    //         if (event.type === "click"){
+    //             // open_turn.open = !open_turn.open;
+    //             this.openState = true;
+    //             console.log("clicked!!")
+    //         }
+    //         if (!this.container.data('loaded')) {
+    //             this.container.load(this.html, this.display_window());
+    //             this.container.data('loaded', true); // Mark as loaded
+    //         } else {
+    //             this.display_window();
+    //         }
+    //     });
+    // }
+
     click_open_button() {
         this.button.on('click', event => {
             if (event.type === "click"){
-                // open_turn.open = !open_turn.open;
                 this.openState = true;
                 console.log("clicked!!")
             }
             if (!this.container.data('loaded')) {
-                this.container.load(this.html, this.display_window());
-                this.container.data('loaded', true); // Mark as loaded
+                this.container.addClass('loading'); // Add loading class
+                this.container.load(this.html, () => {
+                    // Small delay to ensure rendering complete
+                    setTimeout(() => {
+                        this.container.removeClass('loading');
+                        this.display_window();
+                        this.container.data('loaded', true);
+                    }, 10);
+                });
             } else {
                 this.display_window();
             }

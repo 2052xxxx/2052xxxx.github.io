@@ -5,7 +5,7 @@
     background-color: #CBD8FD;
     outline: 3px solid white;
     outline-offset: -3px;
-    overflow: auto;
+    /* overflow: auto; */
     touch-action: none;
 }
 
@@ -48,8 +48,14 @@
     transform: rotate(180deg);
 }
 
+/* .about-container{
+    margin-top: 5px;
+    height: calc(450px - 30px);
+    overflow: auto;
+} */
+
 .intro{
-    margin: 25px 20px 0 20px;
+    margin: 25px 20px 20px 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
@@ -57,16 +63,20 @@
         "ava text text text"
         "overview overview overview overview"
         "menu main main main"
-        "menu main main main"
         ; 
     gap: 10px;
+    touch-action: none;
 }
 
 .avatar {
     padding: auto;
     height: 120px;
     width: 120px;
-    background-color: white;
+    /* background-color: white; */
+    background-image: url('/img/myavatar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
     border-radius: 50%;
     grid-area: ava;
 }
@@ -141,4 +151,37 @@ a{
 .main-div {
     grid-area: main;
     text-align: left;
+    padding-left: 10px;
+    height: 186px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+#education > .title, #experience > .title, #skills > .title {
+    position: relative;
+    background-color: #6074C4;
+    color: white;
+    padding-left: 10px;
+}
+
+#education > .paragraph, #experience > .paragraph, #skills > .paragraph{
+    padding-left: 10px;
+    text-align: justify;
+    position: relative;
+
+}
+
+.paragraph > .timeline{
+    position: absolute;
+    right: 0;
+}
+
+.company-name{
+    /* display: block;
+    text-align: center; */
+    text-decoration: underline;
 }
