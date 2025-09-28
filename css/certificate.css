@@ -46,3 +46,78 @@
 .close-button:active{
     transform: rotate(180deg);
 }
+
+.certificate-container{
+    margin: 10px 0 20px 20px;
+    height: 398px;
+    padding: 15px 0 0 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: grey transparent;
+}
+
+.certificate-container > .item{
+    background-color: #AFBDFC;
+    border: 2px solid #2B2B5D;  
+    margin: 0 10px 20px 0;
+    padding: 10px;
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    touch-action: none;
+    gap: 10px;
+    position: relative;
+
+}
+
+.cerf{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.ava{
+    height: 80px;
+    width: 80px;
+    /* background-color: white; */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ava1{
+    background-image: url('/img/coursera_prof.png');
+}
+
+.ava2{
+    background-image: url('/img/coursera_crs.png');
+}
+
+.ava3{
+    background-image: url('/img/british_council.png');
+}
+
+.ava4{
+    background-image: url('/img/freeCodeCamp.png');
+}
+
+.cerf-name{
+    font-size: 18.72px;
+}
+
+.main{
+    grid-area: main;
+}
+
+.cerf-link{
+    text-decoration: none;
+    color: #2B2B5D;
+}
+
+.cerf-link:hover {
+    text-decoration: underline;
+}
+
+.cerf-link:active {
+    color: #476ce3;
+} 
