@@ -129,14 +129,13 @@ a{
     color: #2B2B5D;
 }
 
-.menu > .content > li{
+.menu > .content > li a{
     padding: 5px;
 }
 
 .menu > .content > li > a {
     color: inherit;
     display: block;
-    width: 100%;
 }
 
 .menu > .content > li:hover{
@@ -155,10 +154,6 @@ a{
     height: 186px;
     overflow-y: auto;
     scrollbar-width: none;
-}
-
-::-webkit-scrollbar-button {
-    display: none;
 }
 
 #education > .title, #experience > .title, #skills > .title {

@@ -11,31 +11,31 @@ $(document).ready(function () {
     const aboutWindow = new WindowManager(
         $('#about-btn'),
         $("#aboutWindow"),
-        "/windows/about.html"
+        "/html/about.html"
     );    
 
     const certificateWindow = new WindowManager(
         $('#certificate-btn'),
         $("#certificateWindow"),
-        "/windows/certificate.html"
+        "/html/certificate.html"
     );    
 
     const projectsWindow = new WindowManager(
         $('#projects-btn'),
         $("#projectsWindow"),
-        "/windows/projects.html"
+        "/html/projects.html"
     );    
 
     const myResumeWindow = new WindowManager(
         $('#myResume-btn'),
         $("#myResumeWindow"),
-        "/windows/myResume.html"
+        "/html/myResume.html"
     );    
 
     const contactWindow = new WindowManager(
         $('#contact-btn'),
         $("#contactWindow"),
-        "/windows/contact.html"
+        "/html/contact.html"
     );    
     
     // Initialize window buttons
