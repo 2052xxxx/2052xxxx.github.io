@@ -21,6 +21,7 @@ body {
 }
 
 .loading {
+    display: none;
     visibility: hidden !important;
     overflow: hidden !important;
 }

@@ -46,3 +46,38 @@
 .close-button:active{
     transform: rotate(180deg);
 }
+
+.projects-container{
+    margin: 10px 0 20px 20px;
+    height: 398px;
+    padding: 15px 0 0 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: grey transparent;
+}
+
+.projects-container > .item{
+    background-color: #AFBDFC;
+    border: 2px solid #2B2B5D;  
+    margin: 0 10px 20px 0;
+    padding: 10px;
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    touch-action: none;
+    gap: 10px;
+    position: relative;
+}
+
+.projects-name{
+    font-size: 18.72px;
+}
+
+.projects-time, .projects-skills{
+    font-style: italic;
+}
+
+.name{
+    text-align: center;
+}

@@ -43,7 +43,7 @@ export class WindowManager {
         this.button.on('click', event => {
             if (event.type === "click"){
                 this.openState = true;
-                console.log("clicked!!")
+                // console.log("clicked!!")
             }
             if (!this.container.data('loaded')) {
                 this.container.addClass('loading'); // Add loading class
