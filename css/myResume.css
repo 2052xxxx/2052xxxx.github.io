@@ -50,7 +50,7 @@
 .myResume-container{
     margin: 20px;
     display: flex;
-    gap: 20px;
+    justify-content: space-around;
 }
 
 .myResume-container > .item{
@@ -73,7 +73,6 @@
 }
 
 .file-link:hover {
-    text-decoration: none;
     color: black;
 }
 
