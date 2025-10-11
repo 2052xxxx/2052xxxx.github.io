@@ -46,3 +46,38 @@
 .close-button:active{
     transform: rotate(180deg);
 }
+
+.myResume-container{
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.myResume-container > .item{
+    width: 84px;
+    overflow: visible;
+}
+
+.file-img{
+    height: 60px;
+    width: 48px;
+    margin: 0 auto 0 auto;
+    background-image: url('/img/resume_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.file-link{
+    text-decoration: none;
+    color: black;
+}
+
+.file-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.file-link:active {
+    text-decoration: none;
+    color: black;
+} 
