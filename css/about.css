@@ -151,10 +151,22 @@ a{
     grid-area: main;
     text-align: left;
     padding-left: 10px;
-    height: 186px;
+    height: 190px;
     overflow-y: auto;
     scrollbar-width: none;
 }
+
+/* .main-div::-webkit-scrollbar{
+    width: 3px;
+}
+
+.main-div::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.main-div::-webkit-scrollbar-thumb{
+   background: #6074C4;
+} */
 
 #education > .title, #experience > .title, #skills > .title {
     position: relative;

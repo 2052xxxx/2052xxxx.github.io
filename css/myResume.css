@@ -5,7 +5,7 @@
     background-color: #CBD8FD;
     outline: 3px solid white;
     outline-offset: -3px;
-
+    touch-action: none;
 }
 
 .title-bar {
@@ -49,9 +49,24 @@
 
 .myResume-container{
     margin: 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    row-gap: 10px;
+    grid-column: auto;
     justify-content: space-around;
 }
+
+/* .myResume-container::-webkit-scrollbar{
+    width: 5px;
+}
+
+.myResume-container::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.myResume-container::-webkit-scrollbar-thumb{
+   background: #5c6198;
+} */
 
 .myResume-container > .item{
     width: 84px;

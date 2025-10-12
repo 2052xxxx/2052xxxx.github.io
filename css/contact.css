@@ -46,3 +46,195 @@
 .close-button:active{
     transform: rotate(180deg);
 }
+
+.contact-container{
+    margin: 8px 0 20px 20px;
+    height: 400px;
+    padding: 15px 13px 0 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "form form form form form"
+        "info info inspo inspo inspo"
+        ; 
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.contact-container::-webkit-scrollbar{
+    width: 5px;
+}
+
+.contact-container::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.contact-container::-webkit-scrollbar-thumb{
+   background: #5c6198;
+}
+
+.contact-form{
+    grid-area: form;
+    text-align: left;
+}
+
+
+.contact-form > .title{
+    background-color: #2B2B5D;
+    display: inline-block;
+    color: white;
+    letter-spacing: 0.2em;
+    padding: 0 2px 0 5px;
+}
+
+.contact-form > .content{
+    background-color: #AFBDFC;
+    border: 2px solid #2B2B5D;
+    margin: 0;
+    padding: 0;
+    color: #2B2B5D;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.submit_btn{
+    align-self: center;
+    width: fit-content;
+}
+
+input[type=text], select, textarea {
+    font-family: "VT323", monospace;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    width: 100%; /* Full width */
+    padding: 5px 10px; /* Some padding */ 
+    background-color: #CBD8FD;
+    border: none; /* Gray border */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+input[type=text]:focus, textarea:focus{
+    outline: none;
+    outline: 2px solid #2B2B5D;
+}
+
+textarea{
+    resize: none;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+    background-color: #2B2B5D;
+    font-family: "VT323", monospace;
+    letter-spacing: 0.05em;
+    font-size: 1em;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+    background-color: #2B2B5D;
+}
+
+textarea::-webkit-scrollbar {
+    width: 3px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+   background: #5c6198;
+}
+
+.contact-info{
+    grid-area: info;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.contact-info > .title{
+    background-color: #2B2B5D;
+    display: inline-block;
+    color: white;
+    letter-spacing: 0.2em;
+    padding: 0 2px 0 5px;
+}
+
+.contact-info > .content{
+    background-color: #AFBDFC;
+    border: 2px solid #2B2B5D;
+    margin: 0;
+    padding: 0;
+    color: #2B2B5D;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.inspo-collected{
+    grid-area: inspo;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.inspo-collected > .title{
+    background-color: #2B2B5D;
+    display: inline-block;
+    color: white;
+    letter-spacing: 0.2em;
+    padding: 0 2px 0 5px;
+}
+
+.inspo-collected > .content{
+    background-color: #AFBDFC;
+    border: 2px solid #2B2B5D;
+    margin: 0;
+    padding: 0;
+    color: #2B2B5D;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.content > .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.email-icon{
+    height: 16px;
+    width: 16px;
+    background-image: url("/img/email-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.location-icon{
+    height: 16px;
+    width: 16px;
+    background-image: url("/img/location-icon.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.line-break{
+    border: 1px solid #2B2B5D;
+}
+
+.app-link{
+    text-decoration: none;
+}
