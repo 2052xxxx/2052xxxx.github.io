@@ -10,7 +10,7 @@
     <div class="contact-container">
         <div class="contact-form">
             <span class="title">Send an Email</span>
-            <form class="content">
+            <form class="content" id="contactForm">
                 <label for="subject">Subject</label>
                 <input type="text" id="subject" name="subject" placeholder="Your Subject..">
 
@@ -27,8 +27,10 @@
                 <div class="item">
                     <div class="email-icon"></div>
                     <span>
-                        Email <br>
-                        minhtrang.nmt02@gmail.com
+                        Email
+                        <span class="email-copy">
+                            minhtrang.nmt02@gmail.com
+                        </span>
                     </span>
                 </div>
                 <div class="item">
@@ -46,7 +48,8 @@
                             title="https://www.linkedin.com/in/minh-trang-nmt/">
                             <img src="/img/linkedin-icon.png" alt="">
                         </a>
-                        <a class="app-link" target="_blank" href="https://github.com/2052xxxx" title="https://github.com/2052xxxx">
+                        <a class="app-link" target="_blank" href="https://github.com/2052xxxx"
+                            title="https://github.com/2052xxxx">
                             <img src="/img/github-icon.png" alt="">
                         </a>
                     </div>
@@ -56,10 +59,17 @@
         <div class="inspo-collected">
             <span class="title">Inspo Collected</span>
             <div class="content">
-                sharyap website <br>
-                pollygon dev <br>
-                pinterest pictures and icons <br>
+                <a target="_blank" class="link" href="https://www.sharyap.com/">
+                    sharyap website
+                </a>
+                <a target="_blank" class="link" href="https://pollygon.dev/">
+                    pollygon dev
+                </a>
+                <a target="_blank" class="link" href="https://pin.it/POrVX7FMH">
+                    pinterest pics & icons
+                </a>
             </div>
         </div>
     </div>
 </div>
+<script src="/js/contact.js"></script>

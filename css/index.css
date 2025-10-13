@@ -253,3 +253,16 @@ body {
 #contact-btn{
     cursor: pointer;
 }
+
+.link{
+    text-decoration: none;
+    color: #2B2B5D;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:active {
+    color: #476ce3;
+} 
