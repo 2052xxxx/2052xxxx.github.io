@@ -18,6 +18,8 @@ body {
     background-position: left bottom, right top;
     background-repeat: no-repeat, no-repeat;
     touch-action: none;
+    overflow: hidden;
+
 }
 
 .loading {

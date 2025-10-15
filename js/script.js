@@ -12,32 +12,32 @@ $(document).ready(function () {
         $('#about-btn'),
         $("#aboutWindow"),
         "/html/about.html"
-    );    
+    );
 
     const certificateWindow = new WindowManager(
         $('#certificate-btn'),
         $("#certificateWindow"),
         "/html/certificate.html"
-    );    
+    );
 
     const projectsWindow = new WindowManager(
         $('#projects-btn'),
         $("#projectsWindow"),
         "/html/projects.html"
-    );    
+    );
 
     const myResumeWindow = new WindowManager(
         $('#myResume-btn'),
         $("#myResumeWindow"),
         "/html/myResume.html"
-    );    
+    );
 
     const contactWindow = new WindowManager(
         $('#contact-btn'),
         $("#contactWindow"),
         "/html/contact.html"
-    );    
-    
+    );
+
     // Initialize window buttons
     aboutWindow.init();
     certificateWindow.init();
@@ -77,9 +77,13 @@ $(document).ready(function () {
             const newX = clientX - dragData.offsetX;
             const newY = clientY - dragData.offsetY;
 
+            const titlebarHeight = 30; // Change this to match your titlebar height
+            const maxY = $(window).height() - titlebarHeight; // Can go down but titlebar must be visible
             // Constrain to viewport
             const constrainedX = Math.max(0, Math.min($(window).width() - dragData.target.outerWidth(), newX));
-            const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.outerHeight(), newY));
+            const constrainedY = Math.max(0, Math.min(maxY, newY));
+            // const constrainedY = Math.max(0, Math.min($(window).height() - dragData.target.outerHeight(), newY));
+
 
             dragData.target.css({
                 left: constrainedX + 'px',
