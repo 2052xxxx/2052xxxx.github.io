@@ -24,16 +24,16 @@
     cursor: grab;
 }
 
-.title-bar:active{
+.title-bar:active {
     cursor: grabbing;
 }
 
-.text-img{
+.text-img {
     display: flex;
     justify-content: center;
 }
 
-.text-img > span{
+.text-img>span {
     padding-left: 10px;
     align-self: center;
 }
@@ -43,44 +43,76 @@
     height: 80%;
 }
 
-.close-button:active{
+.close-button:active {
     transform: rotate(180deg);
 }
 
-.contact-container{
+.contact-container {
     margin: 8px 0 20px 20px;
     height: 400px;
     padding: 15px 13px 0 0;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
-    grid-template-areas: 
+    grid-template-areas:
         "form form form form form"
         "info info inspo inspo inspo"
-        ; 
+    ;
     gap: 10px;
     overflow-y: auto;
 }
 
-.contact-container::-webkit-scrollbar{
+.contact-container::-webkit-scrollbar {
     width: 5px;
 }
 
-.contact-container::-webkit-scrollbar-track{
+.contact-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.contact-container::-webkit-scrollbar-thumb{
-   background: #5c6198;
+.contact-container::-webkit-scrollbar-thumb {
+    background: #5c6198;
 }
 
-.contact-form{
+@-moz-document url-prefix() {
+
+    .contact-container {
+        margin: 8px 0 20px 20px;
+        height: 400px;
+        padding: 15px 17px 0 0;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas:
+            "form form form form form"
+            "info info inspo inspo inspo"
+        ;
+        gap: 10px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: grey transparent;
+    }
+
+    .contact-container::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .contact-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .contact-container::-webkit-scrollbar-thumb {
+        background: #5c6198;
+    }
+}
+
+.contact-form {
     grid-area: form;
     text-align: left;
 }
 
 
-.contact-form > .title{
+.contact-form>.title {
     background-color: #2B2B5D;
     display: inline-block;
     color: white;
@@ -88,7 +120,7 @@
     padding: 0 2px 0 5px;
 }
 
-.contact-form > .content{
+.contact-form>.content {
     background-color: #AFBDFC;
     border: 2px solid #2B2B5D;
     margin: 0;
@@ -100,29 +132,37 @@
     row-gap: 5px;
 }
 
-.submit_btn{
+.submit_btn {
     align-self: center;
     width: fit-content;
 }
 
-input[type=text], select, textarea {
+input[type=text],
+select,
+textarea {
     font-family: "VT323", monospace;
     font-size: 1em;
     letter-spacing: 0.05em;
-    width: 100%; /* Full width */
-    padding: 5px 10px; /* Some padding */ 
+    width: 100%;
+    /* Full width */
+    padding: 5px 10px;
+    /* Some padding */
     background-color: #CBD8FD;
-    border: none; /* Gray border */
-    box-sizing: border-box; /* Make sure that padding and width stays in place */
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    border: none;
+    /* Gray border */
+    box-sizing: border-box;
+    /* Make sure that padding and width stays in place */
+    resize: vertical
+        /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
-input[type=text]:focus, textarea:focus{
+input[type=text]:focus,
+textarea:focus {
     outline: none;
     outline: 2px solid #2B2B5D;
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
@@ -152,16 +192,16 @@ textarea::-webkit-scrollbar-track {
 }
 
 textarea::-webkit-scrollbar-thumb {
-   background: #5c6198;
+    background: #5c6198;
 }
 
-.contact-info{
+.contact-info {
     grid-area: info;
     text-align: left;
     padding-bottom: 20px;
 }
 
-.contact-info > .title{
+.contact-info>.title {
     background-color: #2B2B5D;
     display: inline-block;
     color: white;
@@ -169,7 +209,7 @@ textarea::-webkit-scrollbar-thumb {
     padding: 0 2px 0 5px;
 }
 
-.contact-info > .content{
+.contact-info>.content {
     background-color: #AFBDFC;
     border: 2px solid #2B2B5D;
     margin: 0;
@@ -181,13 +221,13 @@ textarea::-webkit-scrollbar-thumb {
     row-gap: 5px;
 }
 
-.inspo-collected{
+.inspo-collected {
     grid-area: inspo;
     text-align: left;
     padding-bottom: 20px;
 }
 
-.inspo-collected > .title{
+.inspo-collected>.title {
     background-color: #2B2B5D;
     display: inline-block;
     color: white;
@@ -195,7 +235,7 @@ textarea::-webkit-scrollbar-thumb {
     padding: 0 2px 0 5px;
 }
 
-.inspo-collected > .content{
+.inspo-collected>.content {
     background-color: #AFBDFC;
     border: 2px solid #2B2B5D;
     margin: 0;
@@ -207,13 +247,13 @@ textarea::-webkit-scrollbar-thumb {
     row-gap: 5px;
 }
 
-.content > .item {
+.content>.item {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.email-icon{
+.email-icon {
     height: 16px;
     width: 16px;
     background-image: url("/img/email-icon.png");
@@ -222,7 +262,7 @@ textarea::-webkit-scrollbar-thumb {
     background-repeat: no-repeat;
 }
 
-.location-icon{
+.location-icon {
     height: 16px;
     width: 16px;
     background-image: url("/img/location-icon.png");
@@ -231,10 +271,10 @@ textarea::-webkit-scrollbar-thumb {
     background-repeat: no-repeat;
 }
 
-.line-break{
+.line-break {
     border: 1px solid #2B2B5D;
 }
 
-.app-link{
+.app-link {
     text-decoration: none;
 }

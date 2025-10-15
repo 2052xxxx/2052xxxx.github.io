@@ -24,16 +24,16 @@
     cursor: grab;
 }
 
-.title-bar:active{
+.title-bar:active {
     cursor: grabbing;
 }
 
-.text-img{
+.text-img {
     display: flex;
     justify-content: center;
 }
 
-.text-img > span{
+.text-img>span {
     padding-left: 10px;
     align-self: center;
 }
@@ -43,11 +43,11 @@
     height: 80%;
 }
 
-.close-button:active{
+.close-button:active {
     transform: rotate(180deg);
 }
 
-.certificate-container{
+.certificate-container {
     margin: 8px 0 20px 20px;
     height: 400px;
     padding: 15px 5px 0 0;
@@ -56,21 +56,44 @@
     scrollbar-color: grey transparent; */
 }
 
-.certificate-container::-webkit-scrollbar{
+.certificate-container::-webkit-scrollbar {
     width: 5px;
 }
 
-.certificate-container::-webkit-scrollbar-track{
+.certificate-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.certificate-container::-webkit-scrollbar-thumb{
-   background: #5c6198;
+.certificate-container::-webkit-scrollbar-thumb {
+    background: #5c6198;
 }
 
-.certificate-container > .item{
+@-moz-document url-prefix() {
+    .certificate-container {
+        margin: 8px 0 20px 20px;
+        height: 400px;
+        padding: 15px 10px 0 0;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: grey transparent;
+    }
+
+    .certificate-container::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .certificate-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .certificate-container::-webkit-scrollbar-thumb {
+        background: #5c6198;
+    }
+}
+
+.certificate-container>.item {
     background-color: #AFBDFC;
-    border: 2px solid #2B2B5D;  
+    border: 2px solid #2B2B5D;
     margin: 0 10px 20px 0;
     padding: 10px;
     text-align: left;
@@ -82,13 +105,13 @@
 
 }
 
-.cerf{
+.cerf {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.ava{
+.ava {
     height: 80px;
     width: 80px;
     /* background-color: white; */
@@ -96,31 +119,31 @@
     background-repeat: no-repeat;
 }
 
-.ava1{
+.ava1 {
     background-image: url('/img/coursera_prof.png');
 }
 
-.ava2{
+.ava2 {
     background-image: url('/img/coursera_crs.png');
 }
 
-.ava3{
+.ava3 {
     background-image: url('/img/british_council.png');
 }
 
-.ava4{
+.ava4 {
     background-image: url('/img/freeCodeCamp.png');
 }
 
-.cerf-name{
+.cerf-name {
     font-size: 18.72px;
 }
 
-.main{
+.main {
     grid-area: main;
 }
 
-.cerf-link{
+.cerf-link {
     text-decoration: none;
     color: #2B2B5D;
 }
@@ -131,4 +154,4 @@
 
 .cerf-link:active {
     color: #476ce3;
-} 
+}

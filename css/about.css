@@ -156,6 +156,12 @@ a{
     scrollbar-width: none;
 }
 
+@-moz-document url-prefix() {
+    .main-div {
+        height: 180px; /* Different height for Firefox */
+    }
+}
+
 /* .main-div::-webkit-scrollbar{
     width: 3px;
 }
