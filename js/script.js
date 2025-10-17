@@ -111,4 +111,17 @@ $(document).ready(function () {
             windowInstance.click_close_button();
         }
     });
+
+    $(document).on('click', '#aboutWindow .menu a', function (event) {
+        event.preventDefault(); 
+
+        const targetId = $(this).attr('href').substring(1); // e.g. "education"
+        const $target = $('#' + targetId);                  // find the target section
+        const $container = $('.main-div');     // scrollable area inside the About window
+
+        if ($target.length && $container.length) {
+            const scrollTop = $target.offset().top - $container.offset().top + $container.scrollTop();
+            $container.animate({ scrollTop: scrollTop }, 600);
+        }
+    });
 });
