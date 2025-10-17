@@ -14,13 +14,8 @@ export class WindowManager {
         WindowManager.my_windows.push(this);
     }
 
-    // static getZIndex() {
-    //     return zIndex; // Class method reads global
-    // }
-
     init() {
         this.click_open_button();
-        // this.display_window();
     }
 
     click_open_button() {
@@ -38,28 +33,6 @@ export class WindowManager {
             }
         });
     }
-
-    // click_open_button() {
-    //     this.button.on('click', event => {
-    //         if (event.type === "click"){
-    //             this.openState = true;
-    //             // console.log("clicked!!")
-    //         }
-    //         if (!this.container.data('loaded')) {
-    //             this.container.addClass('loading'); // Add loading class
-    //             this.container.load(this.html, () => {
-    //                 // Small delay to ensure rendering complete
-    //                 setTimeout(() => {
-    //                     this.container.removeClass('loading');
-    //                     this.display_window();
-    //                     this.container.data('loaded', true);
-    //                 }, 10);
-    //             });
-    //         } else {
-    //             this.display_window();
-    //         }
-    //     });
-    // }
 
     display_window() {
         this.container.toggle(this.openState);
