@@ -7,6 +7,10 @@
     --icon-name: 1.2em;
 }
 
+* { 
+    font-size: 101%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -39,6 +43,7 @@ body {
     justify-content: space-evenly; */
     min-height: 100vh;
     font-family: "VT323", monospace;
+    /* font-family: "Handjet", sans-serif; */
     text-align: center;
     align-content: center;
 }

@@ -52,11 +52,11 @@
     height: 400px;
     padding: 15px 13px 0 0;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "form form form form form"
-        "info info inspo inspo inspo"
+        "form form form form form form"
+        "info info info inspo inspo inspo"
     ;
     gap: 10px;
     overflow-y: auto;
@@ -81,11 +81,11 @@
         height: 400px;
         padding: 15px 17px 0 0;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: auto;
         grid-template-areas:
-            "form form form form form"
-            "info info inspo inspo inspo"
+            "form form form form form form"
+            "info info info inspo inspo inspo"
         ;
         gap: 10px;
         overflow-y: auto;
