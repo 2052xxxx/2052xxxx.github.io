@@ -54,6 +54,7 @@
     row-gap: 10px;
     grid-column: auto;
     justify-content: space-around;
+    justify-items: center;
 }
 
 /* .myResume-container::-webkit-scrollbar{
