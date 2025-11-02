@@ -7,7 +7,7 @@
     --icon-name: 1.2em;
 }
 
-* { 
+* {
     font-size: 101%;
 }
 
@@ -104,27 +104,67 @@ body {
 
 .categories {
     display: grid;
-    grid-template-rows: 70px 20px;
+    grid-template-rows: 100px;
     grid-template-columns: repeat(5, 200px);
-    grid-template-areas: 
-    "about-img certificate-img projects-img myResume-img contact-img"
-    "about-name certificate-name projects-name myResume-name contact-name";
+    grid-template-areas:
+        "about certificate projects myResume contact";
     row-gap: 5px;
     justify-content: center;
     justify-items: center;
-    align-items: center;
-
     padding-top: 7%;
 }
 
+@media (max-width: 1039px) {
+    body {
+        background-size: 45% auto, 45% auto, cover;
+    }
+
+    .categories {
+        grid-template-rows: 80px;
+        row-gap: 10px;
+        grid-auto-rows: 80px;
+        grid-template-columns: repeat(6, 100px);
+        grid-template-areas:
+            "about about certificate certificate projects projects"
+            ". myResume myResume contact contact .";
+        padding-top: 5%;
+    }
+
+    .icon-img {
+        height: 75% !important;
+    }
+
+    .clouds {
+        display: none;
+    }
+
+    #certificateWindow {
+        width: 500px !important;
+    }
+
+    #projectsWindow {
+        width: 500px !important;
+    }
+
+    #myResumeWindow {
+        width: 500px !important;
+    }
+
+    #contactWindow {
+        width: 500px !important;
+    }
+}
+
 .icon-img {
-    height: 100%;
-    /* cursor: pointer; */
+    height: 80%;
+    align-self: start;
+    cursor: pointer;
 }
 
 .icon-name {
     font-size: var(--icon-name);
     cursor: default;
+    align-self: end;
 }
 
 .clouds {
@@ -215,8 +255,8 @@ body {
 #aboutWindow {
     width: 600px;
     position: absolute;
-    inset-inline-start: 40px;
-    inset-block-start: 40px;
+    inset-inline-start: 20px;
+    inset-block-start: 20px;
 }
 
 #about-btn {
@@ -226,8 +266,8 @@ body {
 #certificateWindow {
     width: 600px;
     position: absolute;
-    inset-inline-start: 80px;
-    inset-block-start: 80px;
+    inset-inline-start: 50px;
+    inset-block-start: 50px;
 }
 
 #certificate-btn {
@@ -238,8 +278,8 @@ body {
 #projectsWindow {
     width: 600px;
     position: absolute;
-    inset-inline-start: 120px;
-    inset-block-start: 120px;
+    inset-inline-start: 80px;
+    inset-block-start: 80px;
 }
 
 #projects-btn {
@@ -249,8 +289,8 @@ body {
 #myResumeWindow {
     width: 600px;
     position: absolute;
-    inset-inline-start: 160px;
-    inset-block-start: 160px;
+    inset-inline-start: 110px;
+    inset-block-start: 110px;
 }
 
 #myResume-btn {
@@ -260,8 +300,8 @@ body {
 #contactWindow {
     width: 600px;
     position: absolute;
-    inset-inline-start: 200px;
-    inset-block-start: 200px;
+    inset-inline-start: 140px;
+    inset-block-start: 140px;
 }
 
 #contact-btn {

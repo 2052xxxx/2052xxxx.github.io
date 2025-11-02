@@ -86,8 +86,8 @@ $(document).ready(function () {
 
 
             dragData.target.css({
-                left: constrainedX + 'px',
-                top: constrainedY + 'px'
+                'inset-inline-start': constrainedX + 'px',
+                'inset-block-start': constrainedY + 'px'
             });
 
             event.preventDefault();
